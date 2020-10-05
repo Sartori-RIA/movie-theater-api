@@ -9,6 +9,7 @@ gem 'pg_search'
 gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
+gem 'rack-attack'
 gem 'rails-i18n'
 gem 'paranoia', '~> 2.2'
 gem 'money-rails', '~>1.13'
