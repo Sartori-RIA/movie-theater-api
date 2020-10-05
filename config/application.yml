@@ -9,6 +9,7 @@ aws: &aws
   aws.region:
   aws.access_key_id:
   aws.secret_access_key:
+  aws.s3_directory:
 
 mailer: &mailer
   mailer.address: smtp.gmail.com
@@ -44,3 +45,4 @@ production:
   aws.region:
   aws.access_key_id:
   aws.secret_access_key:
+  aws.s3_directory:

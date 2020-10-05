@@ -28,6 +28,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-i18n'
 gem 'mini_magick'
 gem 'figaro'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
