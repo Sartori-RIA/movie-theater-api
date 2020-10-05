@@ -21,15 +21,15 @@ development:
   <<: *mailer
   <<: *aws
   <<: *database
-  jwt_key:
+  jwt_key: 42dcb8f62dd54def56861cee45b61350268713d82c0cbe32013d395638908b1f2217de4dabb95ee3868f9d3063ea040d5304cbfe73e875db4bd5f08704632f85
 
 test:
   <<: *mailer
   <<: *database
-  jwt_key:
+  jwt_key: 42dcb8f62dd54def56861cee45b61350268713d82c0cbe32013d395638908b1f2217de4dabb95ee3868f9d3063ea040d5304cbfe73e875db4bd5f08704632f85
 
 production:
-  jwt_key:
+  jwt_key: 42dcb8f62dd54def56861cee45b61350268713d82c0cbe32013d395638908b1f2217de4dabb95ee3868f9d3063ea040d5304cbfe73e875db4bd5f08704632f85
   db.username:
   db.password:
   db.host:
