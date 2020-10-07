@@ -310,13 +310,13 @@ Devise.setup do |config|
   config.sign_in_after_change_password = true
 
   config.jwt do |jwt|
-    jwt.secret = ENV["jwt_key"]
+    jwt.secret = ENV['jwt_key']
     jwt.dispatch_requests = [
-        ['POST', %r{^/sign_in$}],
-        ['POST', %r{^/confirmations}]
+      ['POST', %r{^/sign_in$}],
+      ['POST', %r{^/confirmations}]
     ]
     jwt.revocation_requests = [
-        ['DELETE', %r{^/sign_out$}]
+      ['DELETE', %r{^/sign_out$}]
     ]
     jwt.expiration_time = 1.days.to_i
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
@@ -5,8 +7,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def default_url(*args)
-    "http://192.168.0.193/defaults/default.png"
+  def default_url(*_args)
+    'http://192.168.0.193/defaults/default.png'
   end
 
   # Process files as they are uploaded:
@@ -21,10 +23,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_whitelist
-    %w(jpg jpeg png)
+    %w[jpg jpeg png]
   end
 
   def asset_host
-    "http://192.168.0.193"
+    'http://192.168.0.193'
   end
 end

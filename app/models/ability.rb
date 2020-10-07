@@ -22,13 +22,13 @@ class Ability
   # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   def initialize(user)
     can :read, Role
-    if user.present?
-      can :manage, User, id: user.id
-      case user.role.name
-      when 'ADMIN'
-        can :manage, Role
-      end
-    end
 
+    return if user.blank?
+
+    can :manage, User, id: user.id
+    case user.role.name
+    when 'ADMIN'
+      can :manage, Role
+    end
   end
 end

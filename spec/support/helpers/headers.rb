@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Helpers
   module Headers
     def multipart_header(user)

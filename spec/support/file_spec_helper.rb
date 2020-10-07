@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FileSpecHelper
   class << self
     def txt
