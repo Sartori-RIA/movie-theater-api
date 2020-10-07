@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::Allowlist
 
+  acts_as_paranoid
+
   devise :database_authenticatable, :registerable,
          :recoverable, :validatable,
          :confirmable, :lockable, :trackable,
