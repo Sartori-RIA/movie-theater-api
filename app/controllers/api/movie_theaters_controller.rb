@@ -34,7 +34,7 @@ module Api
     private
 
     def movie_theater_params
-      params.permit(:name, :deleted_at, :picture, :banner)
+      params.permit(:name, :picture, :banner)
     end
   end
 end

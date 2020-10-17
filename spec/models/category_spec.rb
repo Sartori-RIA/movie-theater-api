@@ -1,10 +1,7 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-RSpec.describe Role, type: :model do
+RSpec.describe Category, type: :model do
   describe '.validations' do
-
     context 'with be has presence' do
       it { is_expected.to validate_presence_of(:name) }
     end
