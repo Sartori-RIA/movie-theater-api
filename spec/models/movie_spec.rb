@@ -12,5 +12,9 @@ RSpec.describe Movie, type: :model do
     context 'with be unique' do
       it { is_expected.to validate_uniqueness_of(:title).ignoring_case_sensitivity }
     end
+
+    context 'with be has associations' do
+      it { is_expected.to have_many(:sections) }
+    end
   end
 end

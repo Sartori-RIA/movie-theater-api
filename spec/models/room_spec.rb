@@ -8,6 +8,7 @@ RSpec.describe Room, type: :model do
 
     context 'with be has associations' do
       it { is_expected.to belong_to(:movie_theater) }
+      it { is_expected.to have_many(:sections) }
     end
   end
 end

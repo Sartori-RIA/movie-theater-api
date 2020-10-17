@@ -9,5 +9,9 @@ RSpec.describe Category, type: :model do
     context 'with be unique' do
       it { is_expected.to validate_uniqueness_of(:name).ignoring_case_sensitivity }
     end
+
+    context 'with be has associations' do
+      it { is_expected.to have_many(:movies) }
+    end
   end
 end
