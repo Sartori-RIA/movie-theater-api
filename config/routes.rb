@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :rooms
+
   devise_for :users,
              path: 'auth',
              defaults: { format: :json },
@@ -18,8 +18,13 @@ Rails.application.routes.draw do
              }
 
   namespace :api do
-    resources :roles
-    resources :movie_theaters
     resources :categories
+    resources :roles
+    resources :movies
+    resources :movie_theaters do
+      scope :movie_theaters do
+        resources :rooms
+      end
+    end
   end
 end
