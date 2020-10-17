@@ -1,7 +1,7 @@
 database: &database
   db.username: postgres
   db.password: postgres
-  db.host: db
+  db.host: localhost
 
 aws: &aws
   aws.user:

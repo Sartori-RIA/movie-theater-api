@@ -5,7 +5,9 @@ class Ability
 
   # See the wiki for details:
   # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  def initialize(user)
+  def initialize(user, params)
+    puts "BATMAN"
+    puts params
     can :read, Category
     can :read, MovieTheater
     can :read, Section
