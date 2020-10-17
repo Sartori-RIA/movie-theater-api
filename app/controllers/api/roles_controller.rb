@@ -13,7 +13,7 @@ module Api
     def create
       @role = Role.new(role_params)
       if @role.save
-        render json: @role, status: :created, location: @role
+        render json: @role, status: :created
       else
         render json: @role.errors, status: :unprocessable_entity
       end

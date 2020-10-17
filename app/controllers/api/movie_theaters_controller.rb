@@ -13,7 +13,7 @@ module Api
       @movie_theater = MovieTheater.new(movie_theater_params)
 
       if @movie_theater.save
-        render json: @movie_theater, status: :created, location: @movie_theater
+        render json: @movie_theater, status: :created
       else
         render json: @movie_theater.errors, status: :unprocessable_entity
       end
