@@ -1,0 +1,45 @@
+GET http://localhost:3000/api/categories
+Accept: application/json
+Authorization: {{token}}
+
+###
+
+GET http://localhost:3000/api/categories/1
+Accept: application/json
+Authorization: {{token}}
+
+###
+
+POST http://localhost:3000/api/categories
+Accept: application/json
+Content-Type: application/json
+Authorization: {{token}}
+
+
+{
+  "name": "asdasd"
+}
+
+###
+
+PUT http://localhost:3000/api/categories/1
+Accept: application/json
+Content-Type: application/json
+Authorization: {{token}}
+
+
+{
+  "name": "asdasd"
+}
+
+###
+
+DELETE http://localhost:3000/api/categories
+Accept: application/json
+Authorization: {{token}}
+
+###
+
+GET http://localhost:3000/api/categories/1/movies
+Accept: application/json
+Authorization: {{token}}

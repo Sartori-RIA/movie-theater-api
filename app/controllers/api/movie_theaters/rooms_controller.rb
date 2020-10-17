@@ -36,7 +36,7 @@ module Api
       private
 
       def room_params
-        params.permit(:name, :deleted_at, :movie_theater)
+        params.permit(:name, :movie_theater)
       end
     end
   end

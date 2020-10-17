@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2020_10_17_142004) do
     t.string "jti", null: false
     t.string "aud"
     t.datetime "exp", null: false
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_allowlisted_jwts_on_users_id"
+    t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_142004) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "allowlisted_jwts", "users", column: "users_id"
+  add_foreign_key "allowlisted_jwts", "users"
   add_foreign_key "movie_categories", "categories"
   add_foreign_key "movie_categories", "movies"
   add_foreign_key "movie_theater_movies", "movie_theaters"

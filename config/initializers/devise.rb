@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-# Assuming you have not yet modified this file, each configuration option below
-# is set to its default value. Note that some are commented out while others
-# are not: uncommented lines are intended to protect your configuration from
-# breaking changes in upgrades (i.e., in the event that future versions of
-# Devise change the default values for those options).
-#
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -14,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '42dcb8f62dd54def56861cee45b61350268713d82c0cbe32013d395638908b1f2217de4dabb95ee3868f9d3063ea040d5304cbfe73e875db4bd5f08704632f85'
+  # config.secret_key = 'ad6ecddc3157ebc966e27aa5e25e64a9989ad82b0773e391c89221790fac1d20fb379a7ef7e16c487131357574d9c751f2ca2742819473701d8eec0201bf8fdf'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -27,7 +21,7 @@ Devise.setup do |config|
   config.mailer_sender = ENV['mailer.user_name']
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
   config.parent_mailer = 'ActionMailer::Base'
@@ -74,10 +68,7 @@ Devise.setup do |config|
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will
-  # enable it only for database authentication.
-  # For API-only applications to support authentication "out-of-the-box", you will likely want to
-  # enable this with :database unless you are using a custom strategy.
-  # The supported strategies are:
+  # enable it only for database authentication. The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
 
@@ -112,21 +103,18 @@ Devise.setup do |config|
   # config.reload_routes = true
 
   # ==> Configuration for :database_authenticatable
-  # For bcrypt, this is the cost for hashing the password and defaults to 12. If
+  # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
-  # The number of stretches used for generating the hashed password are stored
-  # with the hashed password. This allows you to change the stretches without
-  # invalidating existing passwords.
   #
   # Limiting the stretches to just one in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
   # a value less than 10 in other environments. Note that, for bcrypt (the default
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 12
+  config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '54d855ee1f61acfd36cdb1f8c2a51945d01fbe43dd74eaae742287f831b58b0ed8fdc173e723e771f6fb02ee8ccb23f7d78d3edb4e6e8301e1094e9cd91d6bd2'
+  # config.pepper = '4dac10626e303d2e54d3198bbeb7347c60e8c07ba9c47854d8cb53c935e5fe541b59960a793de26969ece5ad7fffc7925ef3d2d984eafcb1366ca84ee17a9b06'
 
   # Send a notification to the original email when the user's email is changed.
   config.send_email_changed_notification = true
@@ -160,7 +148,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [:email]
+  config.confirmation_keys = [:email, :cell_phone]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
@@ -197,7 +185,7 @@ Devise.setup do |config|
   # config.lock_strategy = :failed_attempts
 
   # Defines which key will be used when locking and unlocking an account
-  # config.unlock_keys = [:email]
+  # config.unlock_keys = [:email, :cell_phone]
 
   # Defines which strategy will be used to unlock an account.
   # :email = Sends an unlock link to the user email
@@ -208,7 +196,7 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  # config.maximum_attempts = 20
+  # config.maximum_attempts = 6
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
@@ -219,7 +207,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [:email]
+  config.reset_password_keys = [:email]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
@@ -228,7 +216,7 @@ Devise.setup do |config|
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.
-  # config.sign_in_after_reset_password = true
+  config.sign_in_after_reset_password = true
 
   # ==> Configuration for :encryptable
   # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
@@ -307,17 +295,19 @@ Devise.setup do |config|
 
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
+
   config.sign_in_after_change_password = true
 
   config.jwt do |jwt|
-    jwt.secret = ENV['jwt_key']
+    jwt.secret = ENV["jwt_key"]
     jwt.dispatch_requests = [
-      ['POST', %r{^/sign_in$}],
-      ['POST', %r{^/confirmations}]
+        ['POST', %r{^/sign_in$}],
+        ['POST', %r{^/confirmations}]
     ]
     jwt.revocation_requests = [
-      ['DELETE', %r{^/sign_out$}]
+        ['DELETE', %r{^/sign_out$}]
     ]
-    jwt.expiration_time = 1.days.to_i
+    jwt.expiration_time = 30.days.to_i
   end
+
 end

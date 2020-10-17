@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/auth/sign_in
+Content-Type: application/json
+Accept: application/json
+
+{
+  "login": "admin@email.com",
+  "password": "123123123"
+}
+
+> {% client.global.set("token", response.headers.valueOf('Authorization')) %}

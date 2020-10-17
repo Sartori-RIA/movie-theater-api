@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-i18n'
+gem 'date_validator'
 gem 'devise'
 gem 'devise-argon2'
 gem 'devise-encryptable'

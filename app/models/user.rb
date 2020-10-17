@@ -5,10 +5,17 @@ class User < ApplicationRecord
 
   acts_as_paranoid
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :validatable,
-         :confirmable, :lockable, :trackable,
-         :jwt_authenticatable, jwt_revocation_strategy: self
+  devise :database_authenticatable,
+         :encryptable,
+         :registerable,
+         :recoverable,
+         :confirmable,
+         :validatable,
+         :trackable,
+         :jwt_authenticatable,
+         jwt_revocation_strategy: self
+
+  attr_accessor :login
 
   validates :email, :cell_phone, :first_name, :last_name, presence: true
 
@@ -31,11 +38,15 @@ class User < ApplicationRecord
   end
 
   def email_required?
-    if email.nil? && cell_phone.nil?
-      true
-    else
-      false
-    end
+    email.nil? && cell_phone.nil?
+  end
+
+  def on_jwt_dispatch(token, payload)
+    super
+  end
+
+  def password_salt
+    'no salt'
   end
 
   def password_salt=(new_salt) end

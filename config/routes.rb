@@ -2,40 +2,42 @@
 
 Rails.application.routes.draw do
 
-  resources :movie_categories
-  resources :movie_theater_movies
   devise_for :users,
-             path: 'auth',
+             path: 'api/auth',
              defaults: {format: :json},
              path_names: {
                  registration: 'sign_up',
                  confirmation: 'confirmations'
              },
              controllers: {
-                 confirmations: 'confirmations',
-                 unlocks: 'unlocks',
-                 passwords: 'passwords',
+                 confirmations: 'api/auth/confirmations',
+                 unlocks: 'api/auth/unlocks',
+                 passwords: 'api/auth/passwords',
                  sessions: 'sessions',
-                 registrations: 'registrations'
+                 registrations: 'api/auth/registrations'
              }
 
   namespace :api do
+
     resources :categories do
-      scope :categories do
+      scope module: :categories do
         resources :movies, only: %i[index]
       end
     end
+
     resources :movies do
-      scope :movies do
+      scope module: :movies do
         resources :categories, except: %i[index show]
       end
     end
+
     resources :movie_theaters do
-      scope :movie_theaters do
+      scope module: :movie_theaters do
         resources :rooms
         resources :sections
       end
     end
+
     resources :roles
   end
 end
