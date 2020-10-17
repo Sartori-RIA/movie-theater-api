@@ -26,19 +26,19 @@ services:
     ports:
       - 8080:8080
 
-  api:
-    image: cookiecode/base-ruby-on-rails
-    container_name: movie_theater_api
-    ports:
-      - 80:3000
-    volumes:
-      - .:/var/www
-      - .bundle:/usr/local/bundle
-      - .coverage:/var/www/.coverage
-    stdin_open: true
-    tty: true
-    links:
-      - db
-      - mailcatcher
+#  api:
+#    image: cookiecode/base-ruby-on-rails
+#    container_name: movie_theater_api
+#    ports:
+#      - 80:3000
+#    volumes:
+#      - .:/var/www
+#      - .bundle:/usr/local/bundle
+#      - .coverage:/var/www/.coverage
+#    stdin_open: true
+#    tty: true
+#    links:
+#      - db
+#      - mailcatcher
 
 

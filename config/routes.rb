@@ -18,5 +18,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :roles
+    resources :movie_theaters
   end
 end
