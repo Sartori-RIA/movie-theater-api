@@ -20,11 +20,14 @@ Rails.application.routes.draw do
              }
 
   namespace :api do
-    resources :categories
-    resources :roles
+    resources :categories do
+      scope :categories do
+        resources :movies, only: %i[index]
+      end
+    end
     resources :movies do
       scope :movies do
-        resources :categories
+        resources :categories, except: %i[index show]
       end
     end
     resources :movie_theaters do
@@ -33,5 +36,6 @@ Rails.application.routes.draw do
         resources :sections
       end
     end
+    resources :roles
   end
 end
