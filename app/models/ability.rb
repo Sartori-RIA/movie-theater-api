@@ -8,9 +8,8 @@ class Ability
   def initialize(user)
     can :read, Category
     can :read, MovieTheater
-    can :read, Role
-    can :read, Room
     can :read, Section
+    can :read, Movie
 
     return if user.blank?
 
@@ -19,6 +18,7 @@ class Ability
     case user.role.name
     when 'ADMIN'
       can :manage, Category
+      can :manage, Movie
       can :manage, MovieTheater
       can :manage, Role
       can :manage, Room
