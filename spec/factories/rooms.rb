@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
-  factory :role do
+  factory :room do
     sequence(:name) { |n| "category_#{n}" }
+    movie_theater
   end
 end

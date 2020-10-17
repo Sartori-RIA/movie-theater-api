@@ -6,4 +6,5 @@ class MovieTheater < ApplicationRecord
 
   acts_as_paranoid
 
+  has_many :rooms
 end

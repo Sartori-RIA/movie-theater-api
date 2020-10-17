@@ -9,15 +9,18 @@ class Ability
     can :read, Category
     can :read, MovieTheater
     can :read, Role
+    can :read, Room
 
     return if user.blank?
 
     can :manage, User, id: user.id
+
     case user.role.name
     when 'ADMIN'
       can :manage, Category
       can :manage, MovieTheater
       can :manage, Role
+      can :manage, Room
     end
   end
 end
