@@ -1,5 +1,6 @@
 module Api
   class MovieTheatersController < ApplicationController
+    load_and_authorize_resource
 
     def index
       paginate json: @movie_theaters.order(name: :asc)

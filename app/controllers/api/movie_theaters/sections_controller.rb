@@ -1,6 +1,7 @@
 module Api
   module MovieTheaters
     class SectionsController < ApplicationController
+      load_and_authorize_resource
 
       def index
         render json: @sections

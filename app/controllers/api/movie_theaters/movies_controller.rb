@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  load_and_authorize_resource class: MovieTheaterMovie
 
   def index
     paginate json: @movie_theater_movies, include: %i[movie]
