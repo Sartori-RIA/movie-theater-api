@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :movie_theaters do
       scope :movie_theaters do
         resources :rooms
+        resources :sections
       end
     end
   end

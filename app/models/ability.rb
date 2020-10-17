@@ -10,6 +10,7 @@ class Ability
     can :read, MovieTheater
     can :read, Role
     can :read, Room
+    can :read, Section
 
     return if user.blank?
 
@@ -21,6 +22,7 @@ class Ability
       can :manage, MovieTheater
       can :manage, Role
       can :manage, Room
+      can :manage, Section
     end
   end
 end
