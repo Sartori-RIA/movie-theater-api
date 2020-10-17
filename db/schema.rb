@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_134441) do
+ActiveRecord::Schema.define(version: 2020_10_17_142004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,11 +129,15 @@ ActiveRecord::Schema.define(version: 2020_10_17_134441) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "role_id", null: false
     t.index ["cell_phone"], name: "index_users_on_cell_phone", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
@@ -145,4 +149,5 @@ ActiveRecord::Schema.define(version: 2020_10_17_134441) do
   add_foreign_key "rooms", "movie_theaters"
   add_foreign_key "sections", "movies"
   add_foreign_key "sections", "rooms"
+  add_foreign_key "users", "roles"
 end

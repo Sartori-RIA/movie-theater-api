@@ -10,6 +10,10 @@ class User < ApplicationRecord
          :confirmable, :lockable, :trackable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
+  validates :email, :cell_phone, :first_name, :last_name, presence: true
+
+  belongs_to :role
+
   def login
     @login || cell_phone || email
   end
@@ -19,7 +23,7 @@ class User < ApplicationRecord
     conditions = warden_conditions.dup
     if (login = conditions.delete(:login))
       where(conditions.to_h).find_by(
-        ['lower(cell_phone) = :value OR lower(email) = :value', { value: login.downcase }]
+          ['lower(cell_phone) = :value OR lower(email) = :value', {value: login.downcase}]
       )
     elsif conditions.key?(:cell_phone) || conditions.key?(:email)
       find_by(conditions.to_h)
