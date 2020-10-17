@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  resources :movie_theater_movies
   devise_for :users,
              path: 'auth',
              defaults: { format: :json },

@@ -8,4 +8,6 @@ class Movie < ApplicationRecord
   validates :title, uniqueness: true
 
   has_many :sections
+  has_many :movie_theater_movies
+  has_many :movie_theaters, through: :movie_theater_movies
 end

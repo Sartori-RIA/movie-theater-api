@@ -8,6 +8,7 @@ RSpec.describe MovieTheater, type: :model do
 
     context 'with be has associations' do
       it { is_expected.to have_many(:rooms) }
+      it { is_expected.to have_many(:movies).through(:movie_theater_movies) }
     end
   end
 end

@@ -20,6 +20,7 @@ class Ability
       can :manage, Category
       can :manage, Movie
       can :manage, MovieTheater
+      can :manage, MovieTheaterMovie
       can :manage, Role
       can :manage, Room
       can :manage, Section

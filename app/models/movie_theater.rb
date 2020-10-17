@@ -7,4 +7,6 @@ class MovieTheater < ApplicationRecord
   validates :name, presence: true
 
   has_many :rooms
+  has_many :movie_theater_movies
+  has_many :movies, through: :movie_theater_movies
 end
