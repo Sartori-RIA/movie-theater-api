@@ -4,7 +4,7 @@ module Api
       load_and_authorize_resource class: MovieCategory
 
       def index
-        render json: {}
+        paginate json: @movies, include: %i[movie]
       end
     end
   end

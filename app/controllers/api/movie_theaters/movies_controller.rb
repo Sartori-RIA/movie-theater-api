@@ -2,33 +2,33 @@ class MoviesController < ApplicationController
   load_and_authorize_resource class: MovieTheaterMovie
 
   def index
-    paginate json: @movie_theater_movies, include: %i[movie]
+    paginate json: @movies, include: %i[movie]
   end
 
   def show
-    render json: @movie_theater_movie, include: %i[movie]
+    render json: @movie, include: %i[movie]
   end
 
   def create
-    @movie_theater_movie = MovieTheaterMovie.new(movie_theater_movie_params)
+    @movie = MovieTheaterMovie.new(movie_theater_movie_params)
 
-    if @movie_theater_movie.save
-      render json: @movie_theater_movie, status: :created
+    if @movie.save
+      render json: @movie, status: :created
     else
-      render json: @movie_theater_movie.errors, status: :unprocessable_entity
+      render json: @movie.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    if @movie_theater_movie.update(movie_theater_movie_params)
-      render json: @movie_theater_movie
+    if @movie.update(movie_theater_movie_params)
+      render json: @movie
     else
-      render json: @movie_theater_movie.errors, status: :unprocessable_entity
+      render json: @movie.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @movie_theater_movie.destroy
+    @movie.destroy
   end
 
   private

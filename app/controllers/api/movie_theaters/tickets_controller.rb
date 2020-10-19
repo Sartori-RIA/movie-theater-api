@@ -4,7 +4,7 @@ module Api
       load_and_authorize_resource
 
       def index
-        paginate json: @tickets
+        paginate json: @tickets, include: %i[session]
       end
 
       def show
@@ -15,7 +15,7 @@ module Api
         @ticket = Ticket.new(ticket_params)
 
         if @ticket.save
-          render json: @ticket, status: :created, location: @ticket
+          render json: @ticket, status: :created
         else
           render json: @ticket.errors, status: :unprocessable_entity
         end

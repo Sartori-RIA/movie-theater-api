@@ -4,7 +4,7 @@ module Api
       load_and_authorize_resource
 
       def index
-        render json: @sections
+        paginate json: @sections, include: %i[movie room]
       end
 
       def show
