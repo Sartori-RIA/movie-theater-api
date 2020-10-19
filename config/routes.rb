@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       scope module: :movie_theaters do
         resources :rooms
         resources :sections
+        resources :tickets
       end
     end
 

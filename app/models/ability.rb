@@ -31,6 +31,7 @@ class Ability
       can :manage, Role
       can :manage, Room, movie_theater_id: params[:movie_theater_id]
       can :manage, Section, movie_theater_id: params[:movie_theater_id]
+      can :manage, Ticket, session: {room: {movie_theater_id: params[:movie_theater_id]}}
     end
   end
 end
